@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaCompra</title>
+
+    <!-- PRÉVIA DO SITE AO COMPARTILHAR O LINK
+         IMPORTANTE: troque os valores abaixo pelos dados do seu site.
+         A imagem precisa estar publicada na internet e usar uma URL HTTPS pública.
+    -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://SEU-DOMINIO.com/">
+    <meta property="og:title" content="NovaCompra">
+    <meta property="og:description" content="Ofertas para sua casa e tecnologia para o seu dia.">
+    <meta property="og:image" content="https://SEU-DOMINIO.com/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="NovaCompra">
+
+    <!-- Compatibilidade com plataformas que usam Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NovaCompra">
+    <meta name="twitter:description" content="Ofertas para sua casa e tecnologia para o seu dia.">
+    <meta name="twitter:image" content="https://SEU-DOMINIO.com/preview.png">
+
+
+    <style>
+
+        /* CONFIGURAÇÕES */
+
+        * {
+            box-sizing: border-box;
+        }
+									
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: white;
+            color: #06458c;
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            background: #06458c;
+            padding: 15px 30px;
+            color: white;
+        }
+
+        .topo {
+            max-width: 1250px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd000;
+        }
+
+        .acoes {
+            display: flex;
+            gap: 25px;
+            font-size: 28px;
+        }
+
+        /* PESQUISA */
+
+        .pesquisa {
+            max-width: 1250px;
+            margin: 15px auto 0;
+
+            background: white;
+            border-radius: 12px;
+
+            display: flex;
+            overflow: hidden;
+        }
+
+        .pesquisa input {
+            flex: 1;
+            border: none;
+            outline: none;
+
+            padding: 17px;
+            font-size: 17px;
+        }
+
+        .pesquisa button {
+            width: 65px;
+            border: none;
+            background: white;
+
+            font-size: 28px;
+            color: #06458c;
+        }
+
+        /* BANNER */
+
+        .banner {
+            max-width: 1250px;
+            height: 285px;
+
+            margin: 8px auto 0;
+
+            border-radius: 0 0 18px 18px;
+
+            background:
+                repeating-conic-gradient(
+                    from 20deg,
+                    #0755ce 0deg 12deg,
+                    #003b91 12deg 24deg
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 30px 55px;
+
+            color: white;
+        }
+
+        .banner h1 {
+            margin: 0;
+
+            font-size: 48px;
+            color: #ffd000;
+
+            text-shadow: 3px 3px #e87800;
+        }
+
+        .banner h2 {
+            margin: 5px 0;
+            font-size: 30px;
+        }
+
+        .banner p {
+            font-size: 18px;
+        }
+
+        .banner button {
+            border: none;
+            border-radius: 25px;
+
+            padding: 12px 35px;
+
+            background: #ff8500;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .banner-produtos {
+            font-size: 75px;
+        }
+
+        /* INDICADORES */
+
+        .indicadores {
+            text-align: center;
+            margin: 18px 0 45px;
+        }
+
+        .indicadores span {
+            display: inline-block;
+
+            width: 28px;
+            height: 9px;
+
+            margin: 4px;
+
+            border-radius: 10px;
+
+            background: #d5d5d5;
+        }
+
+        .indicadores .ativo {
+            background: #ff8500;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 0 20px 50px;
+        }
+
+        .titulo {
+            text-align: center;
+
+            font-size: 29px;
+
+            margin-bottom: 25px;
+        }
+
+        /* PRODUTOS */
+
+        .produtos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+        .produto {
+            position: relative;
+
+            padding: 15px;
+
+            background: white;
+
+            border: 1px solid #e0e0e0;
+            border-radius: 14px;
+
+            box-shadow:
+                0 2px 7px rgba(0,0,0,0.12);
+        }
+
+        .favorito {
+            position: absolute;
+
+            right: 15px;
+            top: 10px;
+
+            font-size: 30px;
+
+            color: #777;
+
+            cursor: pointer;
+        }
+
+        .produto img {
+            width: 100%;
+            height: 180px;
+
+            object-fit: contain;
+
+            margin-top: 10px;
+        }
+
+        .produto h3 {
+            font-size: 17px;
+
+            color: #06458c;
+
+            min-height: 42px;
+        }
+
+        .loja {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .antigo {
+            color: #666;
+
+            font-size: 15px;
+
+            text-decoration: line-through;
+        }
+
+        .preco {
+            margin-top: 8px;
+
+            color: #f28b00;
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .pix {
+            font-size: 14px;
+            color: #06458c;
+        }
+
+        .parcelamento {
+            margin-top: 12px;
+
+            font-size: 14px;
+            color: #06458c;
+        }
+
+        .comprar {
+            width: 100%;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #06458c;
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .comprar:hover {
+            background: #ff8500;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 12px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .menu {
+                font-size: 25px;
+            }
+
+            .acoes {
+                font-size: 23px;
+                gap: 10px;
+            }
+
+            .banner {
+                height: 250px;
+                padding: 20px;
+            }
+
+            .slide-area {
+                height: 250px;
+            }
+
+            .slide {
+                padding: 20px;
+            }
+
+            .slide h1 {
+                font-size: 30px;
+            }
+
+            .slide h2 {
+                font-size: 20px;
+            }
+
+            .slide p {
+                font-size: 14px;
+            }
+
+            .slide-produtos {
+                font-size: 35px;
+            }
+
+            .seta {
+                width: 35px;
+                height: 55px;
+                font-size: 38px;
+            }
+
+            .banner h1 {
+                font-size: 30px;
+            }
+
+            .banner h2 {
+                font-size: 20px;
+            }
+
+            .banner p {
+                font-size: 14px;
+            }
+
+            .banner-produtos {
+                font-size: 35px;
+            }
+
+            .produtos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .produto {
+                padding: 10px;
+            }
+
+            .produto img {
+                height: 130px;
+            }
+
+            .produto h3 {
+                font-size: 14px;
+            }
+
+            .preco {
+                font-size: 20px;
+            }
+        }
+
+
+        /* CARROSSEL */
+        .slide-area {
+            position: relative;
+            max-width: 1250px;
+            height: 285px;
+            margin: 8px auto 0;
+            overflow: hidden;
+            border-radius: 0 0 18px 18px;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+            touch-action: pan-y;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 55px;
+            color: white;
+            background:
+                repeating-conic-gradient(
+                    from 20deg,
+                    #0755ce 0deg 12deg,
+                    #003b91 12deg 24deg
+                );
+        }
+
+        .slide h1 {
+            margin: 0;
+            font-size: 48px;
+            color: #ffd000;
+            text-shadow: 3px 3px #e87800;
+        }
+
+        .slide h2 {
+            margin: 5px 0;
+            font-size: 30px;
+        }
+
+        .slide p {
+            font-size: 18px;
+        }
+
+        .slide button {
+            border: none;
+            border-radius: 25px;
+            padding: 12px 35px;
+            background: #ff8500;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .slide button:hover {
+            transform: scale(1.04);
+        }
+
+        .slide-produtos {
+            font-size: 75px;
+            white-space: nowrap;
+        }
+
+        .seta {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 70px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.25);
+            color: white;
+            font-size: 50px;
+            line-height: 50px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .seta:hover {
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .esquerda {
+            left: 12px;
+        }
+
+        .direita {
+            right: 12px;
+        }
+
+        .indicadores {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 14px 0 45px;
+        }
+
+        .indicador {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            border: 2px solid #ff8500;
+            border-radius: 50%;
+            background: #d5d5d5;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .indicador::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            border-radius: 50%;
+            background: #ff8500;
+        }
+
+        .indicador.ativo {
+            width: 28px;
+            height: 10px;
+            border-radius: 10px;
+        }
+
+        .indicador.ativo::after {
+            height: 100%;
+            border-radius: 10px;
+            animation: preencher 2s linear;
+        }
+
+        @keyframes preencher {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+
+        /* MELHORIAS VISUAIS E INTERAÇÃO */
+        :root {
+            --azul: #06458c;
+            --azul-escuro: #03356f;
+            --amarelo: #ffd000;
+            --laranja: #ff8500;
+            --fundo: #f6f8fc;
+            --texto: #172033;
+            --muted: #667085;
+        }
+
+        body {
+            background: var(--fundo);
+            color: var(--texto);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            box-shadow: 0 3px 18px rgba(0,0,0,.12);
+        }
+
+        .topo {
+            min-height: 58px;
+        }
+
+        .menu {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            transition: background .2s ease;
+        }
+
+        .menu:hover {
+            background: rgba(255,255,255,.12);
+        }
+
+        .logo {
+            letter-spacing: -.8px;
+        }
+
+        .icone-acao {
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .icone-acao:hover {
+            background: rgba(255,255,255,.12);
+            transform: translateY(-1px);
+        }
+
+        .pesquisa {
+            box-shadow: 0 3px 12px rgba(0,0,0,.08);
+            border: 1px solid rgba(6,69,140,.08);
+        }
+
+        .pesquisa input::placeholder {
+            color: #98a2b3;
+        }
+
+        .slide-area {
+            box-shadow: 0 8px 25px rgba(3,53,111,.15);
+        }
+
+        .slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: 7%;
+            top: -100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.07);
+            pointer-events: none;
+        }
+
+        .slide > div:first-child,
+        .slide-produtos {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide h1 {
+            letter-spacing: -1px;
+        }
+
+        .slide button,
+        .comprar {
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .slide button:hover,
+        .comprar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 16px rgba(0,0,0,.16);
+        }
+
+        .produto {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        }
+
+        .produto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(16,24,40,.14);
+            border-color: #c7d7ec;
+        }
+
+        .produto img {
+            background: #f5f7fb;
+            border-radius: 10px;
+        }
+
+        .produto h3 {
+            line-height: 1.35;
+            margin: 12px 0 4px;
+        }
+
+        .loja {
+            margin: 0 0 2px;
+        }
+
+        .antigo {
+            margin-top: 4px;
+        }
+
+        .preco {
+            line-height: 1.15;
+        }
+
+        .comprar {
+            margin-top: auto;
+        }
+
+        .favorito {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,.10);
+            z-index: 3;
+            transition: .2s ease;
+        }
+
+        .favorito:hover {
+            color: #e53935;
+            transform: scale(1.08);
+        }
+
+        .favorito.ativo {
+            color: #e53935;
+        }
+
+        .badge-desconto {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            padding: 5px 9px;
+            border-radius: 7px;
+            background: #eaf3ff;
+            color: var(--azul);
+            font-size: 12px;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .sem-resultados {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+            grid-column: 1 / -1;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                position: relative;
+            }
+
+            .pesquisa {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .slide-area {
+                border-radius: 0;
+            }
+
+            .slide {
+                padding: 20px 45px 20px 25px;
+            }
+
+            .slide-produtos {
+                font-size: 30px;
+                opacity: .9;
+            }
+
+            .produto:hover {
+                transform: none;
+            }
+        }
+
+
+        .produto-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .produto-link img {
+            display: block;
+            transition: transform .22s ease;
+        }
+
+        .produto-link:hover img {
+            transform: scale(1.025);
+        }
+
+        .produto-link h3 {
+            transition: color .2s ease;
+        }
+
+        .produto-link:hover h3 {
+            color: #ff8500;
+        }
+
+        .link-produto {
+            display: inline-block;
+            margin-top: 8px;
+            color: #06458c;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: underline;
+            opacity: .75;
+        }
+
+
+        a.comprar {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+
+        /* LOGO POR PNG OU LINK */
+        .logo {
+            order: 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: auto;
+            margin-right: auto;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo img {
+            display: block;
+            width: auto;
+            height: 54px;
+            max-width: 230px;
+            object-fit: contain;
+        }
+
+        .topo .menu {
+            order: 1;
+            flex-shrink: 0;
+        }
+
+        .topo .acoes {
+            order: 3;
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .logo img {
+                height: 40px;
+                max-width: 175px;
+            }
+
+            .topo .acoes {
+                margin-left: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<!--
+    COMO CONFIGURAR A IMAGEM DA PRÉVIA:
+    1. Envie uma imagem (recomendado: 1200 x 630 px) para a hospedagem do site.
+    2. Copie o endereço público dela, por exemplo:
+       https://seu-dominio.com/preview.png
+    3. Coloque esse endereço em og:image e twitter:image no <head>.
+    4. Troque também https://SEU-DOMINIO.com/ pelo endereço real do site em og:url.
+-->
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header>
+
+        <div class="topo">
+
+            <div class="menu">
+                ☰
+            </div>
+
+            <a class="logo" href="#" aria-label="NovaCompra">
+                <!--
+                    LOGO DA LOJA:
+                    Opção 1 — PNG local:
+                    src="logo.png"
+
+                    Opção 2 — imagem por link:
+                    src="https://seusite.com/logo.png"
+
+                    Basta trocar o valor de src abaixo.
+                -->
+                <img src="logo.png" alt="NovaCompra" onerror="this.style.display='none'">
+            </a>
+
+            <div class="acoes">
+                <button class="icone-acao" aria-label="Minha conta" title="Minha conta">♙</button>
+            </div>
+
+        </div>
+
+
+        <!-- PESQUISA -->
+
+        <div class="pesquisa">
+
+            <input
+                type="text"
+                placeholder="O que você precisa?"
+            >
+
+            <button>
+                ⌕
+            </button>
+
+        </div>
+
+    </header>
+
+
+		<!-- CARROSSEL -->
+
+<section class="slide-area">
+
+    <div class="slides" id="slides">
+
+
+        <!-- SLIDE 1 -->
+
+        <div class="slide">
+
+            <div>
+
+                <h1>LIQUIDA</h1>
+
+                <h2>ELETRODOMÉSTICOS</h2>
+
+                <p>
+                    A partir de
+                    <strong>R$ 34,90</strong>
+                    mensais
+                </p>
+
+                <button>
+                    Clique aqui!
+                </button>
+
+            </div>
+
+            <div class="slide-produtos">
+                🧊 🔥 🧺
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 2 -->
+
+        <div class="slide">
+
+            <div>
+
+                <h1>OFERTAS</h1>
+
+                <h2>PARA SUA CASA</h2>
+
+                <p>
+                    Encontre produtos com
+                    preços especiais.
+                </p>
+
+                <button>
+                    Ver ofertas
+                </button>
+
+            </div>
+
+            <div class="slide-produtos">
+                📺 🛋️ 🧊
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 3 -->
+
+        <div class="slide">
+
+            <div>
+
+                <h1>TECNOLOGIA</h1>
+
+                <h2>PARA VOCÊ</h2>
+
+                <p>
+                    Confira nossas novidades.
+                </p>
+
+                <button>
+                    Conferir
+                </button>
+
+            </div>
+
+            <div class="slide-produtos">
+                📱 💻 🎧
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 4 -->
+
+        <div class="slide">
+
+            <div>
+
+                <h1>IMPERDÍVEL</h1>
+
+                <h2>APROVEITE AGORA</h2>
+
+                <p>
+                    Não deixe essas ofertas passarem.
+                </p>
+
+                <button>
+                    Comprar
+                </button>
+
+            </div>
+
+            <div class="slide-produtos">
+                🛒 🎁 💰
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SETAS -->
+
+    <button
+        class="seta esquerda"
+        onclick="anterior()">
+        ‹
+    </button>
+
+    <button
+        class="seta direita"
+        onclick="proximo()">
+        ›
+    </button>
+
+</section>
+
+
+<!-- INDICADORES -->
+
+<div class="indicadores">
+
+    <div class="indicador ativo"></div>
+    <div class="indicador"></div>
+    <div class="indicador"></div>
+    <div class="indicador"></div>
+
+</div>
+
+
+    <!-- PRODUTOS -->
+
+    <main>
+
+        <h2 class="titulo">
+            Mais <strong>vendidos</strong>
+        </h2>
+
+
+        <section class="produtos">
+
+
+            <!-- PRODUTO 1 -->
+
+            <div class="produto">
+                <span class="badge-desconto">24% OFF</span>
+                <span class="badge-desconto">27% OFF</span>
+                <span class="badge-desconto">30% OFF</span>
+                <span class="badge-desconto">24% OFF</span>
+
+                <button class="favorito" aria-label="Adicionar aos favoritos" title="Adicionar aos favoritos">♡</button>
+
+                <a class="produto-link" href="https://link.com" target="_blank" rel="noopener noreferrer">
+
+
+                    <img
+
+
+                        src="https://placehold.co/400x300/f5f5f5/06458c?text=Lavadora"
+                    alt="Máquina de lavar"
+
+
+                    >
+
+
+
+                    <h3>
+
+
+                        Máquina de Lavar Brastemp 14 kg,
+                    Smart Sensor, Reduzir Tempo
+
+
+                    </h3>
+
+
+                    <span class="link-produto">link.com</span>
+
+
+                </a>
+
+                <p class="loja">
+                    NovaCompra
+                </p>
+
+                <div class="antigo">
+                    De R$ 2.499,00 por
+                </div>
+
+                <div class="preco">
+                    R$ 1.899,00
+                </div>
+
+                <div class="pix">
+                    no Pix
+                </div>
+
+                <div class="parcelamento">
+                    ou em até 10x de R$ 189,90
+                    sem juros no cartão
+                </div>
+
+                <a class="comprar" href="https://link.com" target="_blank" rel="noopener noreferrer">Comprar</a>
+
+            </div>
+
+
+            <!-- PRODUTO 2 -->
+
+            <div class="produto">
+
+                <button class="favorito" aria-label="Adicionar aos favoritos" title="Adicionar aos favoritos">♡</button>
+
+                <a class="produto-link" href="https://link.com" target="_blank" rel="noopener noreferrer">
+
+
+                    <img
+
+
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiByeD0iMzIiIGZpbGw9IiNmNWY3ZmIiLz4KPHJlY3QgeD0iODAiIHk9IjcwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ2MCIgcng9IjI4IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNkY2U1ZjAiIHN0cm9rZS13aWR0aD0iNiIvPgo8dGV4dCB4PSI0MDAiIHk9IjMxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwNjQ1OGMiPkNvb2t0b3A8L3RleHQ+Cjx0ZXh0IHg9IjQwMCIgeT0iMzg1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzY2NzA4NSI+Tm92YUNvbXByYTwvdGV4dD4KPC9zdmc+" alt="Cooktop"
+
+
+                    >
+
+
+
+                    <h3>
+
+
+                        Cooktop a Gás 4 Bocas
+                    Fischer Fit Line
+
+
+                    </h3>
+
+
+                    <span class="link-produto">link.com</span>
+
+
+                </a>
+
+                <p class="loja">
+                    NovaCompra
+                </p>
+
+                <div class="antigo">
+                    De R$ 529,00 por
+                </div>
+
+                <div class="preco">
+                    R$ 369,00
+                </div>
+
+                <div class="pix">
+                    no Pix
+                </div>
+
+                <div class="parcelamento">
+                    ou em até 10x de R$ 36,90
+                    sem juros no cartão
+                </div>
+
+                <a class="comprar" href="https://link.com" target="_blank" rel="noopener noreferrer">Comprar</a>
+
+            </div>
+
+
+            <!-- PRODUTO 3 -->
+
+            <div class="produto">
+
+                <button class="favorito" aria-label="Adicionar aos favoritos" title="Adicionar aos favoritos">♡</button>
+
+                <a class="produto-link" href="https://link.com" target="_blank" rel="noopener noreferrer">
+
+
+                    <img
+
+
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiByeD0iMzIiIGZpbGw9IiNmNWY3ZmIiLz4KPHJlY3QgeD0iODAiIHk9IjcwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ2MCIgcng9IjI4IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNkY2U1ZjAiIHN0cm9rZS13aWR0aD0iNiIvPgo8dGV4dCB4PSI0MDAiIHk9IjMxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwNjQ1OGMiPlNtYXJ0IFRWPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjM4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjYiIGZpbGw9IiM2NjcwODUiPk5vdmFDb21wcmE8L3RleHQ+Cjwvc3ZnPg==" alt="Smart TV"
+
+
+                    >
+
+
+
+                    <h3>
+
+
+                        Smart TV LED 43 Polegadas
+                    Alta Definição
+
+
+                    </h3>
+
+
+                    <span class="link-produto">link.com</span>
+
+
+                </a>
+
+                <p class="loja">
+                    NovaCompra
+                </p>
+
+                <div class="antigo">
+                    De R$ 2.199,00 por
+                </div>
+
+                <div class="preco">
+                    R$ 1.599,00
+                </div>
+
+                <div class="pix">
+                    no Pix
+                </div>
+
+                <div class="parcelamento">
+                    ou em até 10x de R$ 159,90
+                    sem juros no cartão
+                </div>
+
+                <a class="comprar" href="https://link.com" target="_blank" rel="noopener noreferrer">Comprar</a>
+
+            </div>
+
+
+            <!-- PRODUTO 4 -->
+
+            <div class="produto">
+
+                <button class="favorito" aria-label="Adicionar aos favoritos" title="Adicionar aos favoritos">♡</button>
+
+                <a class="produto-link" href="https://link.com" target="_blank" rel="noopener noreferrer">
+
+
+                    <img
+
+
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiByeD0iMzIiIGZpbGw9IiNmNWY3ZmIiLz4KPHJlY3QgeD0iODAiIHk9IjcwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQ2MCIgcng9IjI4IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNkY2U1ZjAiIHN0cm9rZS13aWR0aD0iNiIvPgo8dGV4dCB4PSI0MDAiIHk9IjMxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwNjQ1OGMiPkdlbGFkZWlyYTwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSIzODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2IiBmaWxsPSIjNjY3MDg1Ij5Ob3ZhQ29tcHJhPC90ZXh0Pgo8L3N2Zz4=" alt="Geladeira"
+
+
+                    >
+
+
+
+                    <h3>
+
+
+                        Geladeira Frost Free
+                    Duplex 400 Litros
+
+
+                    </h3>
+
+
+                    <span class="link-produto">link.com</span>
+
+
+                </a>
+
+                <p class="loja">
+                    NovaCompra
+                </p>
+
+                <div class="antigo">
+                    De R$ 3.299,00 por
+                </div>
+
+                <div class="preco">
+                    R$ 2.499,00
+                </div>
+
+                <div class="pix">
+                    no Pix
+                </div>
+
+                <div class="parcelamento">
+                    ou em até 10x de R$ 249,90
+                    sem juros no cartão
+                </div>
+
+                <a class="comprar" href="https://link.com" target="_blank" rel="noopener noreferrer">Comprar</a>
+
+            </div>
+
+        </section>
+        <div class="sem-resultados" id="semResultados">
+            Nenhum produto encontrado. Tente outro termo de busca.
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer style="
+        background:#03356f;
+        color:white;
+        padding:30px 20px;
+    ">
+        <div style="max-width:1250px;margin:auto;text-align:center;">
+            <strong style="font-size:20px;">NovaCompra</strong>
+            <p style="margin:8px 0 0;opacity:.85;">Ofertas para sua casa e tecnologia para o seu dia.</p>
+            <small style="display:block;margin-top:16px;opacity:.7;">© 2026 NovaCompra · Todos os direitos reservados</small>
+        </div>
+    </footer>
+
+
+
+    <script>
+        /* CARROSSEL */
+
+        let slideAtual = 0;
+        const slides = document.getElementById("slides");
+        const indicadores = document.querySelectorAll(".indicador");
+        let tempo;
+
+        function mostrarSlide(numero) {
+            slideAtual = numero;
+
+            slides.style.transform =
+                "translateX(-" + (slideAtual * 100) + "%)";
+
+            indicadores.forEach(function(indicador) {
+                indicador.classList.remove("ativo");
+            });
+
+            void indicadores[slideAtual].offsetWidth;
+
+            indicadores[slideAtual].classList.add("ativo");
+
+            reiniciarTempo();
+        }
+
+        function proximo() {
+            slideAtual++;
+
+            if (slideAtual >= indicadores.length) {
+                slideAtual = 0;
+            }
+
+            mostrarSlide(slideAtual);
+        }
+
+        function anterior() {
+            slideAtual--;
+
+            if (slideAtual < 0) {
+                slideAtual = indicadores.length - 1;
+            }
+
+            mostrarSlide(slideAtual);
+        }
+
+        function reiniciarTempo() {
+            clearInterval(tempo);
+
+            tempo = setInterval(function() {
+                proximo();
+            }, 2000);
+        }
+
+        indicadores.forEach(function(indicador, numero) {
+            indicador.addEventListener("click", function() {
+                mostrarSlide(numero);
+            });
+        });
+
+        /* DESLIZAR COM O DEDO */
+
+        let inicioX = 0;
+
+        slides.addEventListener("touchstart", function(event) {
+            inicioX = event.touches[0].clientX;
+        });
+
+        slides.addEventListener("touchend", function(event) {
+            const fimX = event.changedTouches[0].clientX;
+            const distancia = inicioX - fimX;
+
+            if (distancia > 50) {
+                proximo();
+            }
+
+            if (distancia < -50) {
+                anterior();
+            }
+        });
+
+        /* COMEÇAR */
+
+        mostrarSlide(0);
+
+
+        /* FAVORITOS */
+        document.querySelectorAll(".favorito").forEach(function(botao) {
+            botao.addEventListener("click", function() {
+                botao.classList.toggle("ativo");
+                botao.textContent = botao.classList.contains("ativo") ? "♥" : "♡";
+                botao.setAttribute(
+                    "aria-label",
+                    botao.classList.contains("ativo")
+                        ? "Remover dos favoritos"
+                        : "Adicionar aos favoritos"
+                );
+            });
+        });
+
+        /* PESQUISA */
+        const campoPesquisa = document.querySelector(".pesquisa input");
+        const cardsProdutos = document.querySelectorAll(".produto");
+        const semResultados = document.getElementById("semResultados");
+
+        campoPesquisa.addEventListener("input", function() {
+            const termo = campoPesquisa.value.trim().toLowerCase();
+            let encontrados = 0;
+
+            cardsProdutos.forEach(function(card) {
+                const conteudo = card.textContent.toLowerCase();
+                const visivel = conteudo.includes(termo);
+                card.style.display = visivel ? "" : "flex";
+                if (!visivel) card.style.display = "none";
+                if (visivel) encontrados++;
+            });
+
+            semResultados.style.display = encontrados === 0 ? "block" : "none";
+        });
+
+        document.querySelector(".pesquisa button").addEventListener("click", function() {
+            campoPesquisa.focus();
+        });
+    </script>
+
+</body>
+
+</html>

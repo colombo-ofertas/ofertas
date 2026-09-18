@@ -1,0 +1,194 @@
+<style>
+
+    /* ÁREA DO SLIDE */
+
+    .slide-area {
+        max-width: 1250px;
+        margin: 8px auto 0;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0 0 18px 18px;
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.6s ease;
+    }
+
+    .slide {
+        min-width: 100%;
+        height: 285px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 30px 55px;
+
+        color: white;
+
+        background:
+            repeating-conic-gradient(
+                from 20deg,
+                #0755ce 0deg 12deg,
+                #003b91 12deg 24deg
+            );
+    }
+
+    /* TEXTOS */
+
+    .slide h1 {
+        margin: 0;
+        font-size: 48px;
+        color: #ffd000;
+        text-shadow: 3px 3px #e87800;
+    }
+
+    .slide h2 {
+        margin: 5px 0;
+        font-size: 30px;
+    }
+
+    .slide p {
+        font-size: 18px;
+    }
+
+    .slide button {
+        border: none;
+        border-radius: 25px;
+
+        padding: 12px 35px;
+
+        background: #ff8500;
+        color: white;
+
+        font-size: 17px;
+        font-weight: bold;
+
+        cursor: pointer;
+    }
+
+    .slide-produtos {
+        font-size: 75px;
+    }
+
+    /* BOTÕES LATERAIS */
+
+    .seta {
+        position: absolute;
+
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 45px;
+        height: 45px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: rgba(255,255,255,0.8);
+        color: #06458c;
+
+        font-size: 30px;
+
+        cursor: pointer;
+
+        z-index: 5;
+    }
+
+    .esquerda {
+        left: 15px;
+    }
+
+    .direita {
+        right: 15px;
+    }
+
+    /* INDICADORES */
+
+    .indicadores {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+
+        margin: 18px 0 45px;
+    }
+
+    .indicador {
+        width: 28px;
+        height: 9px;
+
+        border-radius: 10px;
+
+        background: #d5d5d5;
+
+        overflow: hidden;
+
+        cursor: pointer;
+    }
+
+    .indicador::after {
+        content: "";
+
+        display: block;
+
+        width: 0%;
+        height: 100%;
+
+        background: #ff8500;
+    }
+
+    /* ANIMAÇÃO DOS 2 SEGUNDOS */
+
+    .indicador.ativo::after {
+        animation: preencher 2s linear;
+    }
+
+    @keyframes preencher {
+
+        from {
+            width: 0%;
+        }
+
+        to {
+            width: 100%;
+        }
+
+    }
+
+
+    /* CELULAR */
+
+    @media (max-width: 600px) {
+
+        .slide {
+            height: 250px;
+            padding: 20px;
+        }
+
+        .slide h1 {
+            font-size: 30px;
+        }
+
+        .slide h2 {
+            font-size: 20px;
+        }
+
+        .slide p {
+            font-size: 14px;
+        }
+
+        .slide-produtos {
+            font-size: 35px;
+        }
+
+        .seta {
+            width: 35px;
+            height: 35px;
+            font-size: 22px;
+        }
+
+    }
+
+</style>
+
